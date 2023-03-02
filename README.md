@@ -39,18 +39,18 @@ First you will need to clone this repo to your machine and establish the followi
 your-folder<br>
 |<br>
 |___ygo-code-net-deck<br>
-|    |<br>
-|    |___Complete Robot<br>
-|    |___Construct Base Deck<br>
-|    |    |_YGO Card Database<br>
-|    |___Model_Folder<br>
+|   &nbsp;&nbsp;&nbsp;|<br>
+|   &nbsp;&nbsp;&nbsp;|___Complete Robot<br>
+|    &nbsp;&nbsp;&nbsp;|___Construct Base Deck<br>
+|    &nbsp;&nbsp;&nbsp;|    &nbsp;&nbsp;&nbsp;|_YGO Card Database<br>
+|    &nbsp;&nbsp;&nbsp;|___Model_Folder<br>
 |<br>
 |<br>
 |__project_data_folder<br>
-    |___Replays<br>
-    |    |_log.txt <- this file must contain a number, I recommend starting from 46000000<br>
-    |___Compressed_Replays<br>
-    |___Hands<br>
+    &nbsp;&nbsp;&nbsp;|___Replays<br>
+    &nbsp;&nbsp;&nbsp;|    &nbsp;&nbsp;&nbsp;|_log.txt <- this file must contain a number, I recommend starting from 46000000<br>
+    &nbsp;&nbsp;&nbsp;|___Compressed_Replays<br>
+    &nbsp;&nbsp;&nbsp;|___Hands<br>
 <br>
 
 # API Capture
