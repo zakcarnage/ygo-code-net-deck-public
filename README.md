@@ -4,12 +4,12 @@ Watch the introductory video here:<br>
 https://youtu.be/abKKT3v34AE
 
 # WARNING - USE AT YOUR OWN PERIL
-This project features code which is 
-A) Not optimised;
-B) Only tested on one device.
+This project features code which is<br>
+A) Not optimised;<br>
+B) Only tested on one device.<br><br>
 While the majority of the libraries used are fairly generic, I recommend only using the relevant notebook(s) and script(s) if you are 
 deeply familiar with using Python on your own device.<br>
-In particular, the code makes lazy use of parallel running processes which can be brutal if your system is not prepared for it.<br>
+In particular, the code makes lazy use of parallel running processes which can be brutal if your system is not prepared for them.<br>
 As such, I cannot recommend you use this code. But, if you want to ignore that and try it out, be my guest.<br>
 
 # Introduction
@@ -17,7 +17,6 @@ This project uses free to access match replays from duelingbook to create a trai
 After some filtering according to the user's design, the data is used to train a simple model with the winning flag set as the target.<br>
 The project uses a generic genetic algorithm approach to deck building.<br>
 This practice is widely noted as common for card games with deck building aspects.<br>
-However, I have no references to note as I was not aware when putting this together.
 
 This project was intended as a way to harness useful, publicly available information from the www.duelingbook.com platform.<br>
 Without the work of those running duelingbook, many players would not have access to free to play competitive Yu-Gi-Oh! TCG matches.<br>
@@ -42,7 +41,7 @@ your-folder<br>
 |   &nbsp;&nbsp;&nbsp;|<br>
 |   &nbsp;&nbsp;&nbsp;|___Complete Robot<br>
 |    &nbsp;&nbsp;&nbsp;|___Construct Base Deck<br>
-|    &nbsp;&nbsp;&nbsp;|    &nbsp;&nbsp;&nbsp;|_YGO Card Database<br>
+|    &nbsp;&nbsp;&nbsp;|    &nbsp;&nbsp;&nbsp;|___YGO Card Database<br>
 |    &nbsp;&nbsp;&nbsp;|___Model_Folder<br>
 |<br>
 |<br>
@@ -56,23 +55,24 @@ your-folder<br>
 # API Capture
 (Previously database scraping)
 This stage uses requests to save a copy of the ygoprodeck data locally.<br>
-It is a great service that these people offer, and I highly recommend that you visit their website before runnin any code:<br>
+It is a great service that these people offer, and I highly recommend that you visit their website before running any code:<br>
 https://ygoprodeck.com/api-guide/
 
 # Card Selection
 This stage opens up an interactive window using tkinter.<br>
 Here you can input the names of cards, search through the database, then add them to your deck and save it with a custom name.<br>
-Sometimes you'll want to include engine requirements in your deck. If you specify these, you can ensure that at least one copy will feature in your deck.<br>
+Sometimes you'll want to include engine requirements in your deck. If you specify these, you can ensure that at least one copy will feature in your deck.<br><br>
 Search for a card name.<br>
-Click the card name you want, and make sure it changes in the heading.<br>
+Click the card name you want, and make sure it changes in the heading (if not, click again).<br>
 Click add to deck.<br>
-To remove a card from the deck, double-click its name.<br>
+To remove a card from the deck, double-click its name in the deck.<br>
 To make a card in your deck an engine requirement, click on the name, then click the engine requirement button.<br>
 Type in a name for your deck and use the save button to save the cards into a csv which will be a starting point for the model.
 
 # Replay Scraping
 THIS DOES NOT WORK ANYMORE<br>
-I am looking into ways to deal with it, but right now you can't scrape db replays the way you used to be able to.<br>
+I intend to release a set of replay hands in lieu of an actual fix. As with all things, expect a moderate wait.<br>
+I am looking into ways to deal with this permanently, but right now you can't scrape db replays the way you used to be able to.<br>
 If you have any suggestions (which aren't webdriving as I'm already onto that one) then let me know.<br>
 
 # Model Training
@@ -83,9 +83,11 @@ https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestC
 
 The approach is deeply simplistic, but results were very promising, so I've kept it straightforward for ease of explanation.
 
+Some combinations of cards won't be included in the training sample. For example, it is very unlikely that any player will have 3 copies of Cyber Angel Idaten in their deck, so will rarely draw multiples. However, if there are hands featuring 1 copy with an improved win-rate compared to those with 0 copies, the model may select a high number of Idaten to better the chances of drawing it. 
+
 # Deck Optimising
 This stage generates random decks based on the originally selected cards.<br>
-The minimum is set as 1 for engine requirements and 0 otherwise.<br>
+The minimum card count is set as 1 for engine requirements and 0 otherwise.<br>
 The maximum is based on the latest ban list information as retrieved from the ygoprodeck api.<br>
 One thousand hands are randomly generated for the deck.<br>
 The classifier from the Model Training stage is used to find a 'probability' of winning with each hand.<br>
@@ -96,7 +98,7 @@ The most successful deck is displayed and the top X performing decks are saved d
 Enjoy the new list!
 
 # Notes
-There are MANY shortcomings in this notebook, many of which I have already addressed in some updated code.<br>
+There are MANY shortcomings in this notebook, some of which I have already addressed in updated code on my own device.<br>
 Of note:<br>
 - hand generation is slow;
 - replay scraping does not work (new db auth);
